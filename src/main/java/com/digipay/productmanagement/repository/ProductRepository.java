@@ -1,4 +1,4 @@
-package com.digipay.productmanagement.Repository;
+package com.digipay.productmanagement.repository;
 
 import com.digipay.productmanagement.model.entity.Product;
 import org.springframework.data.repository.CrudRepository;
