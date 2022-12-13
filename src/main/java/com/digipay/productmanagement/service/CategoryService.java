@@ -27,6 +27,7 @@ public class CategoryService implements CrudService<CategoryDto, Long>{
 
     public static Category convertDtoToEntity(CategoryDto categoryDto) {
         Category category = new Category();
+        category.setId(categoryDto.getId());
         category.setTitle(categoryDto.getTitle());
         category.setDescription(categoryDto.getDescription());
         return category;
@@ -60,6 +61,8 @@ public class CategoryService implements CrudService<CategoryDto, Long>{
             category.get().setTitle(categoryDto.getTitle());
             category.get().setDescription(categoryDto.getDescription());
             categoryRepository.save(category.get());
+
+            categoryDto.setId(id);
             return categoryDto;
         } else return null;
     }

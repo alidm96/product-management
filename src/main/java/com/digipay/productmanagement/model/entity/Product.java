@@ -22,7 +22,7 @@ public class Product {
     @Column(name = "product_price")
     private Double price;
     @Column(name = "product_quantity")
-    private Double quantity;
+    private Integer quantity;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;

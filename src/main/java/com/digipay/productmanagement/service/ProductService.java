@@ -32,11 +32,12 @@ public class ProductService implements CrudService<ProductDto, Long>{
 
     private Product convertDtoToEntity(ProductDto productDto) {
         Product product = new Product();
+        product.setId(productDto.getId());
         product.setName(productDto.getName());
         product.setDescription(productDto.getDescription());
         product.setPrice(productDto.getPrice());
         product.setQuantity(productDto.getQuantity());
-        product.setCategory(CategoryService.convertDtoToEntity(categoryService.findById(productDto.getId())));
+        product.setCategory(CategoryService.convertDtoToEntity(categoryService.findById(productDto.getCategoryId())));
         return product;
     }
     @Override
@@ -70,6 +71,8 @@ public class ProductService implements CrudService<ProductDto, Long>{
             product.get().setQuantity(productDto.getQuantity());
             product.get().setCategory(CategoryService.convertDtoToEntity(categoryService.findById(productDto.getCategoryId())));
             productRepository.save(product.get());
+
+            productDto.setId(id);
 
             return productDto;
         }else return null;
